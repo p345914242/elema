@@ -130,6 +130,7 @@ import { Indicator } from 'mint-ui';
 	  	listclick(id){
 	  		
 	  		router.push({name:"list",params:{list:id}})
+	  		
 	  	},
 	  	handleclick(id){
 	  		
