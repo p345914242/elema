@@ -2,11 +2,11 @@
 
 	
 
-	<div id="ff">
+	<div id="home">
 			<swipe class="my-swipe">
 			  <swipe-item class="slide1">	  
 				  <ul>
-					  <li v-for="(data,index) in qian" :key="data.id" @click="handleclick(data.id)">
+					  <li v-for="(data,index) in qian" :key="data.id" @click="listclick(data.id)">
 					  <img v-bind:src="data.image_hash | imgpathcovert" :key="data.id">
 					  	<p>{{data.name}}</p>
 					  </li>
@@ -27,7 +27,7 @@
 					      <ul v-infinite-scroll="loadMore"
 				  infinite-scroll-disabled="loading"
 				  infinite-scroll-distance="10">
-								  <li v-for="(data,index) in list" :key="data.id">
+								  <li v-for="(data,index) in list" :key="data.id" @click="handleclick(data.id)">
 								  
 								  	<p>{{data.name}}</p>
 								  	<img v-bind:src="data.image_path | imgpathcovert" :key="data.id">
@@ -40,24 +40,14 @@
 
 
 		<div id="footer">
-			<mt-tabbar v-model="selected" fixed>
-		  <mt-tab-item id="tab1">
-		    <img>
-		    tab1
-		  </mt-tab-item>
-		  <mt-tab-item id="tab2">
-		    <img>
-		    tab2
-		  </mt-tab-item>
-		  <mt-tab-item id="tab3">
-		    <img >
-		    tab3
-		  </mt-tab-item>
-		  <mt-tab-item id="tab4">
-		    <img >
-		    tab4
-		  </mt-tab-item>
-		</mt-tabbar>
+		<ul>
+			
+			<router-link to="/home" tag="li" activeClass="active">外卖</router-link>
+            <router-link to="/faxian" tag="li" activeClass="active">发现</router-link>
+            <router-link to="/dingdan" tag="li" activeClass="active">订单</router-link>
+            <router-link to="/wode" tag="li" activeClass="active">我的</router-link>
+		</ul>
+			
 		</div>
    
 	</div>	
@@ -75,9 +65,7 @@ import Vue from "vue"
 Vue.component('swipe', Swipe);
 Vue.component('swipe-item', SwipeItem);
 import { Indicator } from 'mint-ui';
-import { Tabbar, TabItem } from 'mint-ui';
-Vue.component(Tabbar.name, Tabbar);
-Vue.component(TabItem.name, TabItem);
+
 	export default{
 		data(){
 			return{
@@ -139,6 +127,10 @@ Vue.component(TabItem.name, TabItem);
 
 	  	},
 
+	  	listclick(id){
+	  		
+	  		router.push({name:"list",params:{list:id}})
+	  	},
 	  	handleclick(id){
 	  		
 	  		router.push({name:"like",params:{like:id}})
@@ -166,7 +158,7 @@ Vue.component(TabItem.name, TabItem);
 
 <style scoped lang="scss">
 
-		#ff{
+		#home{
 			
 			.my-swipe {
 			  height: 200px;
@@ -205,6 +197,22 @@ Vue.component(TabItem.name, TabItem);
 					img{
 						width:40px;
 						height:40px;
+					}
+				}
+			}
+			#footer{
+				ul{
+					width:100%;
+					height:50px;
+					display: flex;
+					position: fixed;
+					bottom: 0px;
+					li{
+						flex:1;
+						text-align: center;
+						line-height: 50px;
+						z-index: 100;
+
 					}
 				}
 			}
