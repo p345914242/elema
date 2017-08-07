@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # elm
 
 > A Vue.js project
@@ -16,3 +17,6 @@ npm run build
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+=======
+# elema
+>>>>>>> 6e24da59ea4addacd50245b8d46624cddcd06398
