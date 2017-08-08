@@ -20,23 +20,37 @@
 			</swipe-item>
 		</swipe>
 		<div id="list">
+			<h3>推荐商家</h3>
 			<ul v-infinite-scroll="loadMore" 
 				infinite-scroll-disabled="loading"
 				infinite-scroll-distance="10">
 
 				<li v-for="(data,index) in list" :key="data.id" @click="handleclick(data.id)">
-					<p>{{data.name}}</p>
 					<img v-bind:src="data.image_path | imgpathcovert" :key="data.id">
+					<span class="name">{{data.name}}</span>
+					<div>
+						评分<span class="rating">{{data.rating}}</span>
+						月售<span>{{data.distance}}</span>
+					</div>
+					<div class="price">
+						<span>¥{{data.piecewise_agent_fee.rules[0].price}}起送/{{data.piecewise_agent_fee.description}}</span>
+						<span class="distance">{{data.distance}}m/
+						<span class="lead_time">{{data.order_lead_time}}分钟</span></span>
+					</div>
 				</li>					  
 			</ul>
 			<p>{{msg}}</p>	
 		</div>
 		<div id="footer">
 			<ul>
-			<router-link to="/home" tag="li" activeClass="active">外卖</router-link>
-            <router-link to="/faxian" tag="li" activeClass="active">发现</router-link>
-            <router-link to="/dingdan" tag="li" activeClass="active">订单</router-link>
-            <router-link to="/wode" tag="li" activeClass="active">我的</router-link>
+			<router-link to="/home" tag="li" activeClass="active">
+			<i class="iconfont icon-eliaomo"></i><p>外卖</p></router-link>
+            <router-link to="/faxian" tag="li" activeClass="active">
+            <i class="iconfont icon-faxian"></i><p>发现</p></router-link>
+            <router-link to="/dingdan" tag="li" activeClass="active">
+            <i class="iconfont icon-dingdan"></i><p>订单</p></router-link>
+            <router-link to="/wode" tag="li" activeClass="active">
+            <i class="iconfont icon-wode"></i><p>我的</p></router-link>
 			</ul>
 		</div>
 	</div>	
@@ -179,14 +193,59 @@ $ui-width: 750px;
 		color:#000;
 	}
 	#list{
-		li{
+		padding-top:px2rem(60px);
+		background-color:#eee;
+		h3{
+			background-color:#fff;
+			height:px2rem(200px);
+			line-height:px2rem(200px);
 			width:100%;
-			height:100px;
-
+			font-size:px2rem(80px);
+			text-indent:px2rem(80px);
+		}
+		li{
+			
+			height:px2rem(500px);
+			background-color:#fff;
+			padding:px2rem(80px) px2rem(60px);
+			border-bottom:1px solid #eee;
 			img{
-				width:40px;
-				height:40px;
+				float:left;
+				padding-right:px2rem(40px);
+				width:px2rem(350px);
+				height:px2rem(350px);
 			}
+			.name{
+				width:px2rem(100px);
+				font-size:px2rem(80px);
+				font-weight:700;
+				overflow:hidden;
+				text-overflow:ellipsis;
+				white-space:nowrap;
+			}
+			div{
+				font-size:px2rem(30px);
+				span{
+					font-size:px2rem(30px);
+					font-weight:400;
+				}
+				.rating{
+					color:red;
+				}
+			}
+			.price{
+				width:100%;
+				border-bottom:1px solid #ccc;
+
+				.distance{
+					float:right;
+
+					.lead_time{
+						color:blue;
+					}
+				}
+			}
+			
 		}
 	}
 	#footer{
@@ -194,15 +253,18 @@ $ui-width: 750px;
 			width:100%;
 			height:px2rem(300px);
 			background-color:#fff;
-			border-top:px2rem(2px) solid #ccc;
+			border-top:px2rem(4px) solid #eee;
 			display: flex;
 			position: fixed;
 			bottom: 0px;
 			li{
 				flex:1;
+				padding-top:px2rem(25px);
 				text-align: center;
-				line-height: 50px;
 				z-index: 100;
+				p{
+					font-size:px2rem(50px);
+				}
 			}
 		}
 	}
