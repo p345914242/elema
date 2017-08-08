@@ -1,11 +1,7 @@
 <template>
-
-	
-<div>
-like
-	
-</div>
-
+	<div>
+		like
+	</div>
 </template>
 
 <script>
@@ -13,5 +9,5 @@ like
 </script>
 
 <style scoped lang="scss">
-		
+
 </style>
