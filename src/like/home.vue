@@ -1,58 +1,45 @@
 <template>
 
-	
-
 	<div id="home">
-			<swipe class="my-swipe">
-			  <swipe-item class="slide1">	  
-				  <ul>
-					  <li v-for="(data,index) in qian" :key="data.id" @click="listclick(data.id)">
-					  <img v-bind:src="data.image_hash | imgpathcovert" :key="data.id">
+		<swipe class="my-swipe">
+			<swipe-item class="slide1">	  
+				<ul>
+					<li v-for="(data,index) in qian" :key="data.id" @click="listclick(data.id)">
+					  	<img v-bind:src="data.image_hash | imgpathcovert" :key="data.id">
 					  	<p>{{data.name}}</p>
-					  </li>
-				  </ul>	
-			  </swipe-item>
-			  <swipe-item class="slide2"><ul>
-					  <li v-for="(data,index) in hou" :key="data.id">
-					  <img v-bind:src="data.image_hash | imgpathcovert" :key="data.id">
+					</li>
+				</ul>	
+			</swipe-item>
+			<swipe-item class="slide2">
+				<ul>
+					<li v-for="(data,index) in hou" :key="data.id" @click="listclick(data.id)">
+						<img v-bind:src="data.image_hash | imgpathcovert" :key="data.id">
 					  	<p>{{data.name}}</p>
-					  </li>
-				  </ul>
-			  </swipe-item>
-			</swipe>
+					</li>
+				</ul>
+			</swipe-item>
+		</swipe>
+		<div id="list">
+			<ul v-infinite-scroll="loadMore" 
+				infinite-scroll-disabled="loading"
+				infinite-scroll-distance="10">
 
-
-					<div id="list">
-					
-					      <ul v-infinite-scroll="loadMore"
-				  infinite-scroll-disabled="loading"
-				  infinite-scroll-distance="10">
-								  <li v-for="(data,index) in list" :key="data.id" @click="handleclick(data.id)">
-								  
-								  	<p>{{data.name}}</p>
-								  	<img v-bind:src="data.image_path | imgpathcovert" :key="data.id">
-								  </li>
-								  
-						  </ul>
-						  <p >{{msg}}</p>	
-					</div>
-
-
-
+				<li v-for="(data,index) in list" :key="data.id" @click="handleclick(data.id)">
+					<p>{{data.name}}</p>
+					<img v-bind:src="data.image_path | imgpathcovert" :key="data.id">
+				</li>					  
+			</ul>
+			<p>{{msg}}</p>	
+		</div>
 		<div id="footer">
-		<ul>
-			
+			<ul>
 			<router-link to="/home" tag="li" activeClass="active">外卖</router-link>
             <router-link to="/faxian" tag="li" activeClass="active">发现</router-link>
             <router-link to="/dingdan" tag="li" activeClass="active">订单</router-link>
             <router-link to="/wode" tag="li" activeClass="active">我的</router-link>
-		</ul>
-			
+			</ul>
 		</div>
-   
 	</div>	
-
-
 </template>
 
 <script>
@@ -60,6 +47,7 @@ import { InfiniteScroll } from 'mint-ui';
 Vue.use(InfiniteScroll);
 import router from "../router";
 require('vue-swipe/dist/vue-swipe.css');
+require('../assets/font_hh4yenufrlpojemi/iconfont.css')
 import {Swipe, SwipeItem} from 'vue-swipe';
 import Vue from "vue"
 Vue.component('swipe', Swipe);
@@ -113,6 +101,7 @@ import { Indicator } from 'mint-ui';
 			});
 
 		Indicator.open('加载中...');
+
 		axios.get(`/shopping/restaurants?latitude=38.8884016&longitude=121.5330541&offset=${this.offset}&limit=20&extras[]=activities&terminal=h5`).then(res=>{
 			console.log(res.data);
 			this.list = res.data;
@@ -158,66 +147,64 @@ import { Indicator } from 'mint-ui';
 </script>
 
 <style scoped lang="scss">
+$ui-width: 750px;
+	@function px2rem($px) {
+	    @return $px/$ui-width*7.5rem;
+}
+#home{
+	.my-swipe {
+		height: px2rem(1000px);
+		color: #fff;
+		list-style: none;
+		text-align: center;
 
-		#home{
-			
-			.my-swipe {
-			  height: 200px;
-			  color: #fff;
-			  list-style: none;
-			  text-align: center;
-			  li{
-				width:25%;
-				height:100px;
-				float: left;
-				img{
-					width:30px;
-					height:30px;
-				}
+		li{
+			width:25%;
+			height:px2rem(320px);
+			float: left;
+			margin-top:px2rem(60px);
+			font-size:px2rem(20px);
+			img{
+				width:px2rem(200px);
+				height:px2rem(200px);
 			}
-			}
-
-			.slide1 {
-			  background-color: #0089dc;
-			  color: #fff;
-			}
-
-			.slide2 {
-			  background-color: #ffd705;
-			  color: #000;
-			}
-
-			.slide3 {
-			  background-color: #ff2d4b;
-			  color: #fff;
-			}
-			#list{
-				li{
-					width:100%;
-					height:100px;
-					img{
-						width:40px;
-						height:40px;
-					}
-				}
-			}
-			#footer{
-				ul{
-					width:100%;
-					height:50px;
-					display: flex;
-					position: fixed;
-					bottom: 0px;
-					li{
-						flex:1;
-						text-align: center;
-						line-height: 50px;
-						z-index: 100;
-
-					}
-				}
-			}
-
-			
 		}
+	}
+
+	.slide1{
+		color:#000;
+	}
+
+	.slide2{
+		color:#000;
+	}
+	#list{
+		li{
+			width:100%;
+			height:100px;
+
+			img{
+				width:40px;
+				height:40px;
+			}
+		}
+	}
+	#footer{
+		ul{
+			width:100%;
+			height:px2rem(300px);
+			background-color:#fff;
+			border-top:px2rem(2px) solid #ccc;
+			display: flex;
+			position: fixed;
+			bottom: 0px;
+			li{
+				flex:1;
+				text-align: center;
+				line-height: 50px;
+				z-index: 100;
+			}
+		}
+	}
+}
 </style>
