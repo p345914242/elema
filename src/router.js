@@ -6,12 +6,12 @@ import like from "./like/like.vue";
 import faxian from "./like/faxian.vue";
 import dingdan from "./like/dingdan.vue";
 import wode from "./like/wode.vue";
-<<<<<<< HEAD
+
 import dlzc from "./like/dlzc.vue";
-=======
+
 import food from "./like/food.vue";
 import good from "./like/good.vue";
->>>>>>> 52492b014a2c910281e00f10c5ceb0789ce4df0c
+
 
 
 
@@ -26,10 +26,10 @@ const routes =[
 {path:'/faxian',component:faxian},
 {path:'/dingdan',component:dingdan},
 {path:'/wode',component:wode},
-<<<<<<< HEAD
+
 {path:'/dlzc',component:dlzc},
-{path:"/like/:like", name:"like",component:like}
-=======
+
+
 {path:'/food',component:food},
 {path:'/good',component:good},
 {path:"/like/:like", name:"like",component:like,
@@ -49,7 +49,7 @@ const routes =[
   		}
   	]
 },
->>>>>>> 52492b014a2c910281e00f10c5ceb0789ce4df0c
+
 ]
 
 
