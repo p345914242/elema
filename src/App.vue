@@ -1,9 +1,9 @@
 <template>
 <div>
 
-   <hello>
+  <hello>
     
-   </hello>
+  </hello>
 
    <router-view></router-view> 
 </div>
