@@ -6,7 +6,12 @@ import like from "./like/like.vue";
 import faxian from "./like/faxian.vue";
 import dingdan from "./like/dingdan.vue";
 import wode from "./like/wode.vue";
+
+import dlzc from "./like/dlzc.vue";
+
 import food from "./like/food.vue";
+import good from "./like/good.vue";
+
 
 
 
@@ -21,20 +26,28 @@ const routes =[
 {path:'/faxian',component:faxian},
 {path:'/dingdan',component:dingdan},
 {path:'/wode',component:wode},
+{path:'/dlzc',component:dlzc},
 {path:'/food',component:food},
+{path:'/good',component:good},
 {path:"/like/:like", name:"like",component:like,
-children:[
+	children:[
+
 
   		{
   			path:"food",
   			component:food
   		},
+      {
+        path:"good",
+        component:good
+      },
   		{
+
   			path:"/like/:like",
   			redirect:"/like/:like/food"
   		}
   	]},
-]
+  ]
 
 
 

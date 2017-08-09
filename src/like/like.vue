@@ -1,3 +1,5 @@
+
+
 <template>
 <div id="like">
 	<section class="one">
@@ -22,33 +24,27 @@
 		</div>
 	</section>
 
-	
-<div>
-
-	
-</div>
-
-
 	<section class="two">
-		<div>
-			
-			<router-link tag="span" to="/like/food" activeClass="show">商品</router-link>
+	<div>
+		
+		<div class="header">
+			<ul>
+				<router-link tag="li" to="/like/food" activeClass="active"><em>商品</em></router-link>
+				<router-link tag="li" to="/like/good/good" activeClass="active">评价</router-link>
+			</ul>
 		</div>
-		<div>
-			
-			<router-link tag="span" to="/like/food" activeClass="active">评价</router-link>
+
+		<router-view></router-view>
+
 		</div>
 	</section>
-	<router-view></router-view>
-	       
 </div>	
 </template>
 
 <script>
-import router from "../router";
-export default{
-
-}
+	export default{
+		
+	}
 </script>
 
 <style scoped lang="scss">
@@ -62,8 +58,6 @@ export default{
     		width: 100%;
     		height: 100%;
     		position: absolute;
-    		// background: url(../assets/img/shop-logo.f6d85f8.png) no-repeat center;
-    		// background-size: cover;
     		background: #bbacb9;
     		filter: blur(0.08rem);
     		z-index: 1;
@@ -115,23 +109,27 @@ export default{
     		}
     	}
 	}
-	.two{
+	.header{
 		height: 2.2rem;
-		background: #fff;
-		div{
-			width: 50%;
-		    height: 2.2rem;
-		    float: left;
-		    text-align: center;
-		    line-height: 2.2rem;
-		    font-size: 16px;
-		    background: #fff;
-		    .show{
-		    	color: #3190e8;
-			    border-bottom: .05rem solid #3190e8;
-			    padding: .1rem .05rem;
-		    }
+	 	background: #fff;
+		ul{
+			display: flex;
+			li{
+				flex:1;
+				list-style: none;
+				height: 2.2rem;
+				line-height: 2.2rem;
+				text-align: center;				
+				em{
+					color: #3190e8;
+					border-bottom: .05rem solid #3190e8;
+					padding: .1rem .05rem;
+					font-style: normal;
+				}
+			}
+
 		}
 	}
 }	
+
 </style>
