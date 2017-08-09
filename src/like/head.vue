@@ -16,19 +16,10 @@ export default{
        myappname(){
          return this.$store.state.appname
        }       
-  },
-	mounted(){
-		
-     
-		
-	},
+  }	
  
 
-	motheds:{
-		handclick(id){
-			
-		}
-	}
+	
 }
 </script>
 

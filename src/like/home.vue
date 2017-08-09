@@ -1,56 +1,21 @@
 <template>
 
-	
-
 	<div id="home">
-              <hello></hello>	
-			<swipe class="my-swipe">
-			  <swipe-item class="slide1">	  
-				  <ul>
-					  <li v-for="(data,index) in qian" :key="data.id" @click="listclick(data.id)">
-					  <img v-bind:src="data.image_hash | imgpathcovert" :key="data.id">
+		<hello></hello>
+		<swipe class="my-swipe">
+			<swipe-item class="slide1">	  
+				<ul>
+					<li v-for="(data,index) in qian" :key="data.id" @click="listclick(data.id)">
+					  	<img v-bind:src="data.image_hash | imgpathcovert" :key="data.id">
 					  	<p>{{data.name}}</p>
-					  </li>
-				  </ul>	
-			  </swipe-item>
-			  <swipe-item class="slide2"><ul>
-					  <li v-for="(data,index) in hou" :key="data.id">
-					  <img v-bind:src="data.image_hash | imgpathcovert" :key="data.id">
+					</li>
+				</ul>	
+			</swipe-item>
+			<swipe-item class="slide2">
+				<ul>
+					<li v-for="(data,index) in hou" :key="data.id" @click="listclick(data.id)">
+						<img v-bind:src="data.image_hash | imgpathcovert" :key="data.id">
 					  	<p>{{data.name}}</p>
-<<<<<<< HEAD
-					  </li>
-				  </ul>
-			  </swipe-item>
-			</swipe>
-
-
-					<div id="list">
-					
-					      <ul v-infinite-scroll="loadMore"
-				  infinite-scroll-disabled="loading"
-				  infinite-scroll-distance="10">
-								  <li v-for="(data,index) in list" :key="data.id" @click="handleclick(data.id)">
-								  
-								  	<p>{{data.name}}</p>
-								  	<img v-bind:src="data.image_path | imgpathcovert" :key="data.id">
-								  </li>
-								  
-						  </ul>
-						  <p >{{msg}}</p>	
-					</div>
-
-
-
-		<div id="footer">
-		<ul>
-			
-			<router-link to="/home" tag="li" activeClass="active">外卖</router-link>
-            <router-link to="/faxian" tag="li" activeClass="active">发现</router-link>
-            <router-link to="/dingdan" tag="li" activeClass="active">订单</router-link>
-            <router-link to="/wode" tag="li" activeClass="active">我的</router-link>
-		</ul>
-			
-=======
 					</li>
 				</ul>
 			</swipe-item>
@@ -88,28 +53,23 @@
             <router-link to="/wode" tag="li" activeClass="active">
             <i class="iconfont icon-wode"></i><p>我的</p></router-link>
 			</ul>
->>>>>>> 1b6e83484c0aba49962a12fb3543b54620d7cb57
 		</div>
-   
 	</div>	
-
-
 </template>
 
 <script>
-
 import header from "../header.vue";
 Vue.component("hello",header);
 import { InfiniteScroll } from 'mint-ui';
 Vue.use(InfiniteScroll);
 import router from "../router";
 require('vue-swipe/dist/vue-swipe.css');
+require('../assets/font_hh4yenufrlpojemi/iconfont.css')
 import {Swipe, SwipeItem} from 'vue-swipe';
 import Vue from "vue"
 Vue.component('swipe', Swipe);
 Vue.component('swipe-item', SwipeItem);
 import { Indicator } from 'mint-ui';
-
 	export default{
 		data(){
 			return{
@@ -121,20 +81,13 @@ import { Indicator } from 'mint-ui';
 				loading:false,
 				offset:0,
 				msg:"loading..."
-
-
-
 			}
 		
 		
 	},
-	compoents:{
-    "header":header, 
-  },
 	
 	filters:{
 	  		
-
 	  		imgpathcovert(value){
 	  			if(value.length == 36){
 	  			return"http://fuss10.elemecdn.com/" + value.slice(0,1) + "/" + value.slice(1,3) + "/" + value.slice(3)+".jpeg";
@@ -147,11 +100,8 @@ import { Indicator } from 'mint-ui';
 	  	},
 	  	
 	  	
-
-
 	
 	mounted(){
-		 this.$store.dispatch("UPDATE_NAME","大连");
 		
 		axios.get("/shopping/v2/entries?latitude=38.88831359999999&longitude=121.5330421&templates[]=main_template").then(res=>{
 			console.log(res.data);
@@ -160,7 +110,6 @@ import { Indicator } from 'mint-ui';
 			this.img = this.qian[0].image_hash
 			this.image = "http://fuss10.elemecdn.com/" + this.img.slice(0,1) + "/" + this.img.slice(1,3) + "/" + this.img.slice(3)+".jpeg";
 			});
-
 		Indicator.open('加载中...');
 		axios.get(`/shopping/restaurants?latitude=38.8884016&longitude=121.5330541&offset=${this.offset}&limit=20&extras[]=activities&terminal=h5`).then(res=>{
 			console.log(res.data);
@@ -168,14 +117,11 @@ import { Indicator } from 'mint-ui';
 			Indicator.close();
 			
 			
-
 		})
 	  },
 	  methods:{
 	  	selected(){
-
 	  	},
-
 	  	listclick(id){
 	  		
 	  		router.push({name:"list",params:{list:id}})
@@ -189,7 +135,6 @@ import { Indicator } from 'mint-ui';
 	  		this.offset = this.offset + 20;
 	  		
 	  		
-
 	  		
 	  		axios.get(`/shopping/restaurants?latitude=38.8884016&longitude=121.5330541&offset=${this.offset}&limit=20&extras[]=activities&terminal=h5`).then(res=>{
 		
@@ -197,76 +142,36 @@ import { Indicator } from 'mint-ui';
 		})
 	  	 }
 	  	}
-
-
-
 	}
-
 	
-
 </script>
 
 <style scoped lang="scss">
-
-		#home{
-			
-			.my-swipe {
-			  height: 200px;
-			  color: #fff;
-			  list-style: none;
-			  text-align: center;
-			  li{
-				width:25%;
-				height:100px;
-				float: left;
-				img{
-					width:30px;
-					height:30px;
-				}
+$ui-width: 750px;
+	@function px2rem($px) {
+	    @return $px/$ui-width*7.5rem;
+}
+#home{
+	.my-swipe {
+		height: px2rem(1000px);
+		color: #fff;
+		list-style: none;
+		text-align: center;
+		li{
+			width:25%;
+			height:px2rem(320px);
+			float: left;
+			margin-top:px2rem(60px);
+			font-size:px2rem(20px);
+			img{
+				width:px2rem(200px);
+				height:px2rem(200px);
 			}
-			}
-
-			.slide1 {
-			  background-color: #0089dc;
-			  color: #fff;
-			}
-
-<<<<<<< HEAD
-			.slide2 {
-			  background-color: #ffd705;
-			  color: #000;
-			}
-
-			.slide3 {
-			  background-color: #ff2d4b;
-			  color: #fff;
-			}
-			#list{
-				li{
-					width:100%;
-					height:100px;
-					img{
-						width:40px;
-						height:40px;
-					}
-				}
-			}
-			#footer{
-				ul{
-					width:100%;
-					height:50px;
-					display: flex;
-					position: fixed;
-					bottom: 0px;
-					li{
-						flex:1;
-						text-align: center;
-						line-height: 50px;
-						z-index: 100;
-
-					}
-				}
-=======
+		}
+	}
+	.slide1{
+		color:#000;
+	}
 	.slide2{
 		color:#000;
 	}
@@ -314,10 +219,8 @@ import { Indicator } from 'mint-ui';
 			.price{
 				width:100%;
 				border-bottom:1px solid #ccc;
-
 				.distance{
 					float:right;
-
 					.lead_time{
 						color:blue;
 					}
@@ -343,9 +246,8 @@ import { Indicator } from 'mint-ui';
 				p{
 					font-size:px2rem(50px);
 				}
->>>>>>> 1b6e83484c0aba49962a12fb3543b54620d7cb57
 			}
-
-			
 		}
+	}
+}
 </style>

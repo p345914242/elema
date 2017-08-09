@@ -25,9 +25,7 @@ export default{
 			qian:[],
 		}
 	},
-	compoents:{
-    "head":head,
-    },
+	
 
 	filters:{
 	  		

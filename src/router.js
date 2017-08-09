@@ -22,7 +22,18 @@ const routes =[
 {path:'/dingdan',component:dingdan},
 {path:'/wode',component:wode},
 {path:'/food',component:food},
-{path:"/like/:like", name:"like",component:like}
+{path:"/like/:like", name:"like",component:like,
+children:[
+
+  		{
+  			path:"food",
+  			component:food
+  		},
+  		{
+  			path:"/like/:like",
+  			redirect:"/like/:like/food"
+  		}
+  	]},
 ]
 
 

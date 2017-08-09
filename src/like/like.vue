@@ -28,20 +28,27 @@
 	
 </div>
 
-=======
+
 	<section class="two">
 		<div>
-			<span class="show">商品</span>
+			
+			<router-link tag="span" to="/like/food" activeClass="show">商品</router-link>
 		</div>
 		<div>
-			<span>评价</span>
+			
+			<router-link tag="span" to="/like/food" activeClass="active">评价</router-link>
 		</div>
 	</section>
+	<router-view></router-view>
+	       
 </div>	
 </template>
 
 <script>
+import router from "../router";
+export default{
 
+}
 </script>
 
 <style scoped lang="scss">
