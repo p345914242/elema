@@ -2,7 +2,7 @@
 
 	
 <div>
-like
+
 	
 </div>
 
