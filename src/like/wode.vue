@@ -354,7 +354,8 @@ $ui-width: 750px;
 				}
 			}
 			
-		}}
+		}
+	}
 		.two{
 			width: 100%;
 			height: px2rem(160px);
