@@ -1,7 +1,7 @@
 <template>
   	<div id="header">
     	<div class="map">
-      		<i class="iconfont icon-suozaidi"></i>大连
+      		<i class="iconfont icon-suozaidi">大连</i>
       		<span>
         		<div>
           			<p>26°</p>
@@ -28,13 +28,18 @@ export default{
 			list:[],
 			offset:0
 		}
+
 	},
+   
 	mounted(){
 		axios.get("/shopping/v3/hot_search_words?latitude=38.8883437&longitude=121.5330936").then(res=>{
 			console.log(res.data);
 			this.list = res.data;
+     
 		})
 	},
+ 
+
 	motheds:{
 		handclick(id){
 			router.push({name:"search",params:{search:id}})

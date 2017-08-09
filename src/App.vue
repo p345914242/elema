@@ -1,10 +1,8 @@
 <template>
 <div>
 
-   <hello>
-    
-   </hello>
 
+   
    <router-view></router-view> 
 </div>
 
@@ -12,27 +10,25 @@
 
 <script>
 import Vue from"vue";
-import header from "./header.vue";
 
-Vue.component("hello",header);
  
-
+import {mapState} from "vuex";
 
 
 export default {
+  
   data(){
     return{
       
       
     }
   },
+  
 
   methods:{
     
-  },
-  compoents:{
-    "header":header, 
   }
+  
 }
 </script>
 

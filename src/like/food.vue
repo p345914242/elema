@@ -155,7 +155,7 @@
 
 <script>
 	export default{
-		
+
 	}
 </script>
 

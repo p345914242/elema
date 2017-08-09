@@ -1,6 +1,7 @@
 <template>
 
 	<div id="home">
+		<hello></hello>
 		<swipe class="my-swipe">
 			<swipe-item class="slide1">	  
 				<ul>
@@ -57,6 +58,8 @@
 </template>
 
 <script>
+import header from "../header.vue";
+Vue.component("hello",header);
 import { InfiniteScroll } from 'mint-ui';
 Vue.use(InfiniteScroll);
 import router from "../router";
@@ -67,7 +70,6 @@ import Vue from "vue"
 Vue.component('swipe', Swipe);
 Vue.component('swipe-item', SwipeItem);
 import { Indicator } from 'mint-ui';
-
 	export default{
 		data(){
 			return{
@@ -79,16 +81,13 @@ import { Indicator } from 'mint-ui';
 				loading:false,
 				offset:0,
 				msg:"loading..."
-
-
-
 			}
 		
 		
 	},
+	
 	filters:{
 	  		
-
 	  		imgpathcovert(value){
 	  			if(value.length == 36){
 	  			return"http://fuss10.elemecdn.com/" + value.slice(0,1) + "/" + value.slice(1,3) + "/" + value.slice(3)+".jpeg";
@@ -101,8 +100,6 @@ import { Indicator } from 'mint-ui';
 	  	},
 	  	
 	  	
-
-
 	
 	mounted(){
 		
@@ -113,23 +110,18 @@ import { Indicator } from 'mint-ui';
 			this.img = this.qian[0].image_hash
 			this.image = "http://fuss10.elemecdn.com/" + this.img.slice(0,1) + "/" + this.img.slice(1,3) + "/" + this.img.slice(3)+".jpeg";
 			});
-
 		Indicator.open('加载中...');
-
 		axios.get(`/shopping/restaurants?latitude=38.8884016&longitude=121.5330541&offset=${this.offset}&limit=20&extras[]=activities&terminal=h5`).then(res=>{
 			console.log(res.data);
 			this.list = res.data;
 			Indicator.close();
 			
 			
-
 		})
 	  },
 	  methods:{
 	  	selected(){
-
 	  	},
-
 	  	listclick(id){
 	  		
 	  		router.push({name:"list",params:{list:id}})
@@ -143,7 +135,6 @@ import { Indicator } from 'mint-ui';
 	  		this.offset = this.offset + 20;
 	  		
 	  		
-
 	  		
 	  		axios.get(`/shopping/restaurants?latitude=38.8884016&longitude=121.5330541&offset=${this.offset}&limit=20&extras[]=activities&terminal=h5`).then(res=>{
 		
@@ -151,13 +142,8 @@ import { Indicator } from 'mint-ui';
 		})
 	  	 }
 	  	}
-
-
-
 	}
-
 	
-
 </script>
 
 <style scoped lang="scss">
@@ -171,7 +157,6 @@ $ui-width: 750px;
 		color: #fff;
 		list-style: none;
 		text-align: center;
-
 		li{
 			width:25%;
 			height:px2rem(320px);
@@ -184,11 +169,9 @@ $ui-width: 750px;
 			}
 		}
 	}
-
 	.slide1{
 		color:#000;
 	}
-
 	.slide2{
 		color:#000;
 	}
@@ -236,10 +219,8 @@ $ui-width: 750px;
 			.price{
 				width:100%;
 				border-bottom:1px solid #ccc;
-
 				.distance{
 					float:right;
-
 					.lead_time{
 						color:blue;
 					}
