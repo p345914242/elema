@@ -2,140 +2,39 @@
 <div id="food">
 	<section class="three">
 		<ul class="left">
-			<li class="open">热销榜</li>
-			<li>美味汉堡</li>
-			<li>π</li>
-			<li>饮料</li>
-			<li>副品</li>
-			<li>副品1</li>
-			<li>副品2</li>
-			<li>副品3</li>
-			<li>副品4</li>
-			<li>副品5</li>
+			<li v-for="(data,index) in qian" :key="data.id">
+			<a href="javascript:void(0)" @click="goAnchor('#anchor-'+index)">		  	
+				{{data.name}}</a>
+					</li>
 		</ul>
 		<ul class="right">
-			<li>
-				<header>
-					<strong>热销榜</strong>
-					<span>大家喜欢吃，才叫真好吃。</span>
-				</header>
-				<section class="con">
-					<div class="l">
-						<img src="../assets/img/slider-pic1.b7ed189.png"/>
-					</div>
-					<div class="r">
-						<h4>吮指原味鸡</h4>
-						<p class="p1">具有神秘配方浓郁的香料所散发的绝佳风味，鲜嫩多汁。</p>
-						<p class="p2">月售590份，好评率95%</p>
-						<div class="money">
-							<span>￥11</span>
-							<div class="add">
-								<span class="add_span">
-									+
-								</span>
+				<li v-for="(data,index) in qian" :key="data.id" :id="'anchor-'+index">
+					<header>
+						<strong>{{data.name}}</strong>
+						<span>{{data.description}}</span>
+					</header>
+					<ul>
+						<li class="con" v-for="(item,index) in data.foods" >
+							<div class="l">
+							<img v-bind:src="item.image_path | imgpathcovert">	
 							</div>
-						</div>
-					</div>
-				</section>
-				<section class="con">
-					<div class="l">
-						<img src="../assets/img/slider-pic1.b7ed189.png"/>
-					</div>
-					<div class="r">
-						<h4>吮指原味鸡</h4>
-						<p class="p1">具有神秘配方浓郁的香料所散发的绝佳风味，鲜嫩多汁。</p>
-						<p class="p2">月售590份，好评率95%</p>
-						<div class="money">
-							<span>￥11</span>
-							<div class="add">
-								<span class="add_span">
-									+
-								</span>
+							<div class="r">
+						        <h4>{{item.name}}</h4>
+								<p class="p1">{{item.description}}</p>
+								<p class="p2">月售{{item.month_sales}}份，好评率{{item.satisfy_rate}}%</p>
+								<div class="money">
+									<span>￥{{item.specfoods[0].price}}</span>
+									<div class="add">
+										<span class="add_span">
+											+
+						  				</span>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				</section>
-				<section class="con">
-					<div class="l">
-						<img src="../assets/img/slider-pic1.b7ed189.png"/>
-					</div>
-					<div class="r">
-						<h4>吮指原味鸡</h4>
-						<p class="p1">具有神秘配方浓郁的香料所散发的绝佳风味，鲜嫩多汁。</p>
-						<p class="p2">月售590份，好评率95%</p>
-						<div class="money">
-							<span>￥11</span>
-							<div class="add">
-								<span class="add_span">
-									+
-								</span>
-							</div>
-						</div>
-					</div>
-				</section>
-			</li>
-
-						<li>
-				<header>
-					<strong>热销榜</strong>
-					<span>大家喜欢吃，才叫真好吃。</span>
-				</header>
-				<section class="con">
-					<div class="l">
-						<img src="../assets/img/slider-pic1.b7ed189.png"/>
-					</div>
-					<div class="r">
-						<h4>吮指原味鸡</h4>
-						<p class="p1">具有神秘配方浓郁的香料所散发的绝佳风味，鲜嫩多汁。</p>
-						<p class="p2">月售590份，好评率95%</p>
-						<div class="money">
-							<span>￥11</span>
-							<div class="add">
-								<span class="add_span">
-									+
-								</span>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section class="con">
-					<div class="l">
-						<img src="../assets/img/slider-pic1.b7ed189.png"/>
-					</div>
-					<div class="r">
-						<h4>吮指原味鸡</h4>
-						<p class="p1">具有神秘配方浓郁的香料所散发的绝佳风味，鲜嫩多汁。</p>
-						<p class="p2">月售590份，好评率95%</p>
-						<div class="money">
-							<span>￥11</span>
-							<div class="add">
-								<span class="add_span">
-									+
-								</span>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section class="con">
-					<div class="l">
-						<img src="../assets/img/slider-pic1.b7ed189.png"/>
-					</div>
-					<div class="r">
-						<h4>吮指原味鸡</h4>
-						<p class="p1">具有神秘配方浓郁的香料所散发的绝佳风味，鲜嫩多汁。</p>
-						<p class="p2">月售590份，好评率95%</p>
-						<div class="money">
-							<span>￥11</span>
-							<div class="add">
-								<span class="add_span">
-									+
-								</span>
-							</div>
-						</div>
-					</div>
-				</section>
-			</li>				
-		</ul>
+						 </li>
+				    </ul>
+				</li>
+			</ul>
 	</section>
 
 	<section class="four">
@@ -155,6 +54,55 @@
 
 <script>
 	export default{
+		data(){
+			return{
+				qian:[],
+				img:[],
+                
+				
+
+			}
+		},
+		filters:{
+	  		
+	  		imgpathcovert(value){
+	  			console.log(value);
+	  			if(value===null){
+	  				return null
+	  			}else{
+	  				return"http://fuss10.elemecdn.com/" + value.slice(0,1) + "/" + value.slice(1,3) + "/" + value.slice(3)+".jpeg";
+	  			}
+	  			
+	  			
+	  			
+	  			
+	  	}
+	  			
+	  		
+	  	},
+
+
+	  	methods: {
+		    goAnchor(selector) {
+		    	var a = document.querySelector(".right");
+		        var anchor = this.$el.querySelector(selector);
+		        a.scrollTop = anchor.offsetTop;
+		       
+		    }
+		},
+		mounted(){
+			
+		console.log(this.$route.params.like);
+		axios.get(`/shopping/v2/menu?restaurant_id=${this.$route.params.like}`).then(res=>{
+			console.log(res.data);
+			this.qian = res.data;
+            this.img = this.qian[0].image_hash
+			
+			});
+		
+		
+	  },
+
 		
 	}
 </script>
@@ -162,7 +110,7 @@
 <style scoped lang="scss">
 #food{
 	width:100%;
-	height:100%;
+	
 	.three{
 		    height: 509.5px;
 		    padding-bottom: 1.2rem;
@@ -172,6 +120,8 @@
 		    	width: 4.5rem;
     			float: left;
     			background: #f4f4f4;
+    			overflow-y: auto;
+    			height: 100%;
     			li{
     				padding: 8px 5px;
 				    font-size: 14px;
@@ -180,6 +130,11 @@
 				    text-align: center;
 				    height: 28px;
 				    line-height: 28px;
+				    overflow: hidden;
+				    a{
+				    	color: black;
+				    	text-decoration: none;
+				    }
     			}
     			.open{
     					background: #fff;
@@ -190,6 +145,8 @@
 		    .right{
 		    	margin-left: 4.5rem;
     			background: #fff;
+    			overflow-y:auto;
+    			height: 100%; 
     			header{
     				    padding: .5rem;
 					    box-sizing: border-box;
