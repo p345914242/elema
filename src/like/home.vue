@@ -36,7 +36,7 @@
 					<div class="price">
 						<span>¥{{data.piecewise_agent_fee.rules[0].price}}起送/{{data.piecewise_agent_fee.description}}</span>
 						<span class="distance">{{data.distance}}m/
-						<span class="lead_time">{{data.order_lead_time}}分钟</span></span>
+							<span class="lead_time">{{data.order_lead_time}}分钟</span></span>
 					</div>
 				</li>					  
 			</ul>
