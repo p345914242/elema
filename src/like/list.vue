@@ -61,10 +61,10 @@ export default{
 	},
 	methods:{
 		backclick(){
-
+			router.push('/home');
 		},
 		infoclick(){
-
+			router.push('/like/food');
 		}
 	}
 }
