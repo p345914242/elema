@@ -1,5 +1,3 @@
-
-
 <template>
 <div id="like">
 	<section class="one">
@@ -13,7 +11,12 @@
 			</nav>
 			<div class="top">
 				<div class="top_img">
-					<img v-bind:src="image_path"/>
+
+                <img v-bind:src="image_path | imgpathcovert">
+					
+
+					
+
 				</div>
 				<div class="top_text">
 					<h3 class="ell">{{name}}</h3>
@@ -59,6 +62,21 @@ import Vue from "vue";
 
 			}
 		},
+
+		filters:{
+	  		
+	  		imgpathcovert(value){
+	  			if(value.length == 36){
+	  			return"http://fuss10.elemecdn.com/" + value.slice(0,1) + "/" + value.slice(1,3) + "/" + value.slice(3)+".jpeg";
+	  		}
+	  			else{
+	  			return"http://fuss10.elemecdn.com/" + value.slice(0,1) + "/" + value.slice(1,3) + "/" + value.slice(3)+".png";
+	  		}
+	  			
+	  		}
+	  	},
+		
+
 		methods:{
 			holleclick(){
 				router.push('/home');
@@ -68,22 +86,36 @@ import Vue from "vue";
 		mounted(){
 
 
-		axios.get("/shopping/restaurant/635837?extras[]=activities&extras[]=albums&extras[]=license&extras[]=identification&latitude=38.913689&longitude=121.614761").then(res=>{
+        console.log(this.$route.params.like)
+		axios.get(`/shopping/restaurant/${this.$route.params.like}?extras[]=activities&extras[]=albums&extras[]=license&extras[]=identification&latitude=38.913689&longitude=121.614761`).then(res=>{
 			console.log(res.data);
+			console.log(res.data.image_path);
 			this.name = res.data.name;
 			this.promotion_info = res.data.promotion_info;
 			this.image_path = res.data.image_path
+
+
+
+		
 		});
 
 	  },
 	}
 </script>
 
+
+
 <style scoped lang="scss">
 #like{
 	width:100%;
-	height:100%;
+	
+	position:fixed;
+
 	.one{
+
+		display:flex;
+		top: 0;
+
 		height: 7.6rem;
     	position: relative;
     	.bg{
@@ -156,8 +188,8 @@ import Vue from "vue";
 	.header{
 		height: 2.2rem;
 	 	background: #fff;
-		ul{
-			display: flex;
+		ul{display:flex;
+			
 			li{
 				flex:1;
 				list-style: none;
