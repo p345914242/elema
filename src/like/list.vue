@@ -63,8 +63,8 @@ export default{
 		backclick(){
 			router.push('/home');
 		},
-		infoclick(){
-			router.push('/like/food');
+		infoclick(id){
+			router.push({name:"like",params:{like:id}});
 		}
 	}
 }
