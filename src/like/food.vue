@@ -54,6 +54,7 @@
 
 <script>
 	export default{
+
 		data(){
 			return{
 				qian:[],
@@ -104,6 +105,7 @@
 	  },
 
 		
+
 	}
 </script>
 

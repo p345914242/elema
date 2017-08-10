@@ -11,8 +11,12 @@
 			</nav>
 			<div class="top">
 				<div class="top_img">
+
                 <img v-bind:src="image_path | imgpathcovert">
 					
+
+					
+
 				</div>
 				<div class="top_text">
 					<h3 class="ell">{{name}}</h3>
@@ -58,6 +62,7 @@ import Vue from "vue";
 
 			}
 		},
+
 		filters:{
 	  		
 	  		imgpathcovert(value){
@@ -71,6 +76,7 @@ import Vue from "vue";
 	  		}
 	  	},
 		
+
 		methods:{
 			holleclick(){
 				router.push('/home');
@@ -79,13 +85,14 @@ import Vue from "vue";
 		},
 		mounted(){
 
+
         console.log(this.$route.params.like)
 		axios.get(`/shopping/restaurant/${this.$route.params.like}?extras[]=activities&extras[]=albums&extras[]=license&extras[]=identification&latitude=38.913689&longitude=121.614761`).then(res=>{
 			console.log(res.data);
 			console.log(res.data.image_path);
-			this.name = res.data.name;
-			this.promotion_info = res.data.promotion_info;
-			this.image_path = res.data.image_path
+
+
+		
 		});
 
 	  },
@@ -101,8 +108,11 @@ import Vue from "vue";
 	position:fixed;
 
 	.one{
+<<<<<<< HEAD
 		display:flex;
 		top: 0;
+=======
+>>>>>>> 99bb627efc74d4f7834a7631ba57e9f27c7ace24
 		height: 7.6rem;
     	position: relative;
     	.bg{

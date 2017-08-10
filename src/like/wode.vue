@@ -54,8 +54,26 @@
 				</div>				
 			</div>
 		</div>
-
 	</div>
+	<div id="fx">
+
+			<div class="one">
+				<div class="ft"></div>
+				<div class="gh">
+					<p>服务中心<span>></span></p>
+					
+				</div>				
+			</div>
+			<div class="two">
+				<div class="ft"></div>
+				<div class="gh">
+					<p>下载饿了么APP<span>></span></p>
+					
+				</div>				
+			</div>
+
+
+	</div>	
 </div>
 </template>
 
@@ -197,6 +215,7 @@ $ui-width: 750px;
 		background: #f5f5f5;
 		overflow:hidden;
 		border-top: px2rem(2px) solid #efefef;
+		border-bottom: px2rem(2px) solid #efefef;
 
 		.w{
 			margin-top: px2rem(20px);
@@ -288,7 +307,6 @@ $ui-width: 750px;
 					p{
 						margin-left: px2rem(100px);
 						height: px2rem(159px);
-						border-bottom: px2rem(2px) solid #efefef;
 						span{
 							float:right;
 							margin-right: px2rem(30px);
@@ -299,5 +317,76 @@ $ui-width: 750px;
 				}
 			}
 		}
+	}
+	#fx{
+		width: 100%;
+		height: px2rem(830px);		
+		padding-top:px2rem(20px);
+		background: #f5f5f5;
+		position: relative;
+		.one{
+			width: 100%;
+			height: px2rem(160px);
+			line-height: px2rem(160px);
+			background: #fff;
+		.ft{
+			width: px2rem(40px);
+			height: px2rem(40px);
+			background: #000;
+			float: left;
+			margin-left: px2rem(40px);
+			margin-top: px2rem(55px);
+		}
+		.gh{
+			width: 100%;
+			position: absolute;
+
+			right: 0;
+			float:left;
+			border-bottom: px2rem(2px) solid #f5f5f5;
+			p{
+				margin-left: px2rem(100px);
+				height: px2rem(159px);
+				span{
+					float:right;
+					margin-right: px2rem(30px);
+
+				}
+			}
+			
+		}
+	}
+		.two{
+			width: 100%;
+			height: px2rem(160px);
+			line-height: px2rem(160px);
+			background: #fff;
+		.ft{
+			width: px2rem(40px);
+			height: px2rem(40px);
+			background: #000;
+			float: left;
+			margin-left: px2rem(40px);
+			margin-top: px2rem(55px);
+		}
+		.gh{
+			width: 100%;
+			position: absolute;
+			top: px2rem(180px);
+			right: 0;
+			float:left;
+			border-bottom: px2rem(2px) solid #f5f5f5;
+			p{
+				margin-left: px2rem(100px);
+				height: px2rem(159px);
+				span{
+					float:right;
+					margin-right: px2rem(30px);
+
+				}
+			}
+			
+		}
+	}
 	}
 </style>
