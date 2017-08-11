@@ -11,6 +11,10 @@ import dlzc from "./like/dlzc.vue";
 
 import food from "./like/food.vue";
 import good from "./like/good.vue";
+import jifen from "./like/jifen.vue";
+import youhui from "./like/youhui.vue";
+import dx from "./like/dx.vue";
+import mima from "./like/mima.vue";
 
 
 
@@ -25,8 +29,28 @@ const routes =[
 {path:"/list/:list", name:"list",component:list},
 {path:'/faxian',component:faxian},
 {path:'/dingdan',component:dingdan},
+{path:'/jifen',component:jifen},
+{path:'/youhui',component:youhui},
 {path:'/wode',component:wode},
-{path:'/dlzc',component:dlzc},
+{path:'/dlzc/:dlzc', name:'dlzc',component:dlzc,
+  children:[
+
+    {
+      path:'dx',
+      component:dx      
+    },
+    {
+      path:'mima',
+      component:mima
+    },
+          {
+
+        path:"/dlzc/:dlzc",
+        redirect:"/dlzc/:dlzc/dx"
+      }
+
+  ]
+},
 {path:'/food',component:food},
 {path:'/good',component:good},
 {path:"/like/:like", name:"like",component:like,

@@ -8,7 +8,7 @@
 
 		<div class="min">
 				<span class="left"></span>
-					<router-link to="/dlzc" tag="a" activeClass="active">
+					<router-link to="/dlzc/dx" tag="a" activeClass="active">
 					<div class="cen">
 						<p class="dz">登录/注册</p>
 						<p class="bom">
@@ -23,11 +23,11 @@
  	<div id="it">
 		<div class="l">
 			<span></span>
-			<p>优惠</p>
+			<p @click="yhclick">优惠</p>
 		</div>
 		<div class="r">
 			<span></span>
-			<p>积分</p>
+			<p @click="jfclick">积分</p>
 		</div>
 	</div>
 	<div id="wje">
@@ -71,15 +71,26 @@
 					
 				</div>				
 			</div>
-
-
-	</div>	
+	</div>
+	<div id="footer">
+			<ul>
+			<router-link to="/home" tag="li" activeClass="active">
+			<i class="iconfont icon-eliaomo"></i><p>外卖</p></router-link>
+            <router-link to="/faxian" tag="li" activeClass="active">
+            <i class="iconfont icon-faxian"></i><p>发现</p></router-link>
+            <router-link to="/dingdan" tag="li" activeClass="active">
+            <i class="iconfont icon-dingdan"></i><p>订单</p></router-link>
+            <router-link to="/wode" tag="li" activeClass="active">
+            <i class="iconfont icon-wode"></i><p>我的</p></router-link>
+			</ul>
+		</div>	
 </div>
 </template>
 
 <script>
 import router from "../router";
 import Vue from "vue";
+
 export default{
 
 		methods:{
@@ -89,6 +100,14 @@ export default{
 			
 			ddclick(){
 				router.push('dingdan');
+			},
+
+			yhclick(){
+				router.push('youhui');
+			},
+
+			jfclick(){
+				router.push('jifen');
 			}
 	
 		}
@@ -388,5 +407,25 @@ $ui-width: 750px;
 			
 		}
 	}
+	}
+	#footer{
+		ul{
+			width:100%;
+			height:px2rem(170px);
+			background-color:#fff;
+			border-top:px2rem(2px) solid #eee;
+			display: flex;
+			position: fixed;
+			bottom: 0px;
+			li{
+				flex:1;
+				padding-top:px2rem(25px);
+				text-align: center;
+				z-index: 100;
+				p{
+					font-size:px2rem(25px);
+				}
+			}
+		}
 	}
 </style>
